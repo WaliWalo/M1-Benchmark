@@ -90,7 +90,7 @@ const submit = function () {
   if (selected !== "") {
     if (selected == questions[number].correct_answer) {
       score++;
-      scoreP.innerHTML = score;
+      scoreP.innerHTML = `${score}/${questions.length}`;
       alert("Correct");
       card.classList.remove("bg-primary");
       card.classList.add("bg-success");
