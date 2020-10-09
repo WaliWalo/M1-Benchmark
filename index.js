@@ -76,6 +76,7 @@ const startBtn = function () {
 //if answer correct -> background green, score + 1
 //else answer wrong -> background red
 //change card attributes
+
 const submit = function () {
   let selected = "";
   let radioBtn = document.querySelectorAll(".radio");
@@ -84,14 +85,26 @@ const submit = function () {
       selected = radioBtn[i].id;
     }
   }
-
+  let card = document.querySelector("#card");
+  let scoreP = document.querySelector("#score");
   if (selected !== "") {
+    if (selected == questions[number].correct_answer) {
+      score++;
+      scoreP.innerHTML = score;
+      alert("Correct");
+      card.classList.remove("bg-primary");
+      card.classList.add("bg-success");
+    } else {
+      alert(`Wrong, correct answer is ${questions[number].correct_answer}`);
+      card.classList.remove("bg-primary");
+      card.classList.add("bg-danger");
+    }
     number++;
-
     if (number >= questions.length) {
       alert("Complete");
+    } else {
+      populateCard(number);
     }
-    populateCard(number);
   } else {
     alert("Pick an answer");
   }
@@ -147,4 +160,7 @@ const populateCard = function (num) {
       card.append(label);
     });
   }
+  card.classList.remove("bg-danger");
+  card.classList.remove("bg-success");
+  card.classList.add("bg-primary");
 };
