@@ -3,7 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Computer Quiz</title>
+    <script src="index.js"></script>
   </head>
-  <body></body>
+  <body>
+    <h1 class="jumbotron text-center">Welcome to Computer Quiz!</h1>
+    <main class="container">
+      <div class="row" id="Options">
+        <div class="col text-center">
+          <h2>Number of Questions</h2>
+          <select class="form-control" id="numQues"></select>
+          <script>
+            //loop options
+            let input = document.querySelector("#numQues");
+            for (let i = 0; i < 50; i++) {
+              let option = document.createElement("option");
+              option.innerText = i + 1;
+              input.appendChild(option);
+            }
+          </script>
+        </div>
+
+        <div class="col text-center">
+          <h2>Difficulty</h2>
+          <select class="form-control" id="difficulty">
+            <option>Easy</option>
+            <option>Medium</option>
+            <option>Hard</option>
+          </select>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col text-center">
+          <button
+            type="button"
+            class="btn btn-success"
+            id="startBtn"
+            onclick="startBtn()"
+          >
+            Start
+          </button>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col text-center" id="cards">
+          <h2>QUESTIONS HERE</h2>
+          <div class="card bg-primary">
+            <div class="card-body text-center" id="card">
+              <p class="card-text" id="title">Good Luck!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <button type="button" class="btn btn-dark" onclick="submit()">
+            Submit
+          </button>
+        </div>
+      </div>
+      <hr />
+    </main>
+  </body>
 </html>
